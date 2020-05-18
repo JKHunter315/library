@@ -1,0 +1,173 @@
+@import url('https://fonts.googleapis.com/css2?family=Oleo+Script&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Balsamiq+Sans&display=swap');
+
+html {
+  background: linear-gradient(rgba(255,255,255,0.3), rgba(255,255,255,0.3)), url(https://images.unsplash.com/photo-1507842217343-583bb7270b66?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1153&q=80);
+  font-family: 'Roboto', sans-serif;
+}
+
+h1 {
+  text-align: center;
+  font-size: 4.5em;
+  margin-top: -.2em;
+  background-color: rgba(255,255,255,0.7);
+  font-family: 'Oleo Script', cursive;
+}
+
+input[type="radio"] {
+  text-align: center;
+  margin-bottom: 3em;
+}
+
+#add-book-btn {
+  font-size: 1.6em;
+  display: block;
+  margin: auto auto;
+  border-style: solid;
+  border-width: .1em;
+  border-color: #ADADAD;
+  background-color: #BABABA;
+  padding: .5em;
+  width: 100%;
+  border-radius: 7%;
+  color: black;
+  box-shadow: 3px 3px 5px rgba(68, 68, 68, 0.6);
+  font-weight: 600;
+}
+
+label {
+  font-size: 1.5em;
+}
+
+.radio-label {
+  font-size: 1.5em;
+  display: inline-block;
+}
+
+#form-read-yes {
+  margin-right: 2.5em;
+}
+
+input[type="text"], input[type="number"] {
+  margin-bottom: 1.4em;
+  font-size: 1.65em;
+  margin-top: .2em;
+  height: 1em;
+  width: 85%;
+}
+
+form > p {
+  font-size: 1.5em;
+  margin-top: -.5em;
+}
+
+#open-form {
+  font-size: 1.7em;
+  display: block;
+  margin: auto auto;
+  background-color: #F4F123;
+  padding: .5em;
+  width: 90%;
+  border-radius: 6%;
+  color: black;
+  border-style: solid;
+  font-weight: 700;
+  margin-top: -1.5em;
+  border-color: #D8AC0C;
+  box-shadow: 3px 3px 5px rgba(68, 68, 68, 0.6);
+}
+
+#open-form:hover {
+  background-color: #EBE813;
+  cursor: pointer;
+}
+
+button:active {
+  transform: scale(0.96);
+}
+
+#books-container {
+  display: flex;
+  flex-direction: columns;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.books {
+  display: block;
+  text-align: center;
+  background: url(https://cdn.clipart.email/d977aba33976aa6e456956696a278529_blank-book-clipart_580-445.jpeg);
+  width: 21%;
+  padding-top: .1em;
+  margin-top: 1.5em;
+  margin-left: 1em;
+  border-radius: 10%;
+  box-shadow: 10px 10px 10px rgba(68, 68, 68, 0.6);
+}
+
+.books > p {
+  font-family: 'Balsamiq Sans', cursive;
+  margin-left: .5em;
+  font-size: 1.4em;
+}
+
+.books > h3 {
+  font-size: 1.7em;
+  margin-bottom: -.2em;
+}
+
+.books > button {
+  font-size: 1.1em;
+  margin-right: 1.5em;
+  margin-left: 1.5em;
+  margin-top: .1em;
+  margin-bottom: .7em;
+  width: 70%;
+  border-radius: 4%;
+  border-style: solid;
+  border-width: 2.2px;
+  padding: .2em;
+}
+
+.read-status {
+  background-color: rgba(158, 225, 90, 0.79);
+  display: block;
+  text-align: center;
+  margin-bottom: 1em;
+  width: 92%;
+}
+
+.delete-book {
+  background-color: #F5411D;
+  font-weight: 750;
+  color: black;
+  border-color: #771A07;
+}
+
+.read-button {
+  background-color: #F6F487;
+  border-color: #85811E;
+  font-weight: 620;
+  font-size: 1.3em;
+}
+
+.read-button:hover {
+  background-color: #EBE537;
+}
+.delete-book:hover {
+  background-color: #D02B0A;
+  color: white;
+}
+
+.not-read {
+  background-color: #F6F487;
+}
+
+.done-yet {
+  background-color: rgb(158, 225, 90);
+  border-color: #5D9521;
+}
+.done-yet:hover {
+  background-color: #77BB2E;
+}
