@@ -19,23 +19,6 @@ let bookReadStatus;
 let deleteBtn;
 let toggleReadBtn;
 
-// use codepen for quicker testing for this one
-
-/*
-window.unload = function() {
-    if (!storage) {
-        return;
-    } else {
-        for (let j = 0; j < localStorage.length; j++) {
-            let retrievedStorage = localStorage.getItem(j);
-            let storedObject = JSON.parse(retrievedStorage);
-            bookArray.push(storedObject);
-        }
-        bookArray.forEach(book => makeBookCards(book));
-    }
-}
-*/
-
 let bookArray = [];
 let i = 0;
 
@@ -65,7 +48,7 @@ function addBooktoLib(e) {
     addBookForm.reset();
     bookArray.push(submittedBook);
     makeBookCards(bookArray[i]);
-    //localStorage.setItem(i, JSON.stringify(bookArray[i]));
+    localStorage.setItem(i, JSON.stringify(bookArray[i]));
     i++;
 }
 
@@ -85,16 +68,6 @@ function Book(title, author, pages, read) {
     }
 }
 
-//dummyBooks
-const dummyBookOne = new Book("The Hunger Games", "Suzanna Collins", 374, "no");
-bookArray.push(dummyBookOne);
-makeBookCards(dummyBookOne);
-i++;
-const dummyBookTwo = new Book("Harry Potter & The Sorcerers Stone", "JK Rowling", 223, "yes");
-bookArray.push(dummyBookTwo);
-makeBookCards(dummyBookTwo);
-i++;
-
 function makeBookCards(book) {
         bookCard = document.createElement('div');
         bookCard.classList.add('books');
@@ -112,6 +85,7 @@ function makeBookCards(book) {
         deleteBtn = document.createElement('button');
         deleteBtn.classList.add('delete-book');
         deleteBtn.textContent = "Delete";   
+        deleteBtn.addEventListener('click', deleteBook); 
         toggleReadBtn = document.createElement('button');
         bookReadStatus.classList.add('read-status');
         toggleReadBtn.classList.add('read-button');
@@ -124,6 +98,7 @@ function makeBookCards(book) {
             bookReadStatus.textContent = "Status: Read";
             toggleReadBtn.textContent = "Read again?";
         }
+        toggleReadBtn.addEventListener('click', changeReadStatus);
         bookCard.appendChild(bookReadStatus);
         bookCard.appendChild(toggleReadBtn);
         bookCard.appendChild(deleteBtn);
@@ -144,13 +119,39 @@ var storage = (function() {
 }());
 */
 
-deleteBtn.addEventListener('click', deleteBook); 
-
 function deleteBook(e) {
-    console.log(deleteBtn);
-    let deletedBookCard = e.parentNode;
-    console.log(deletedBookCard);
-    libraryBooks.removeChild(deletedBookCard);
+    let removedBook = e.target.parentNode;
+    let removedBookID = removedBook.getAttribute('id');
+    removedBook.remove();
     bookArray.splice(removedBookID, 1);
-    //localStorage.removeItem(removedBookID);
-    };
+    localStorage.removeItem(removedBookID);
+}
+
+function changeReadStatus(e) {
+    if (e.target.textContent === "Finished reading?") {
+        bookReadStatus.classList.remove('not-read');
+        toggleReadBtn.classList.remove('done-yet');
+        bookReadStatus.textContent = "Status: Read";
+        toggleReadBtn.textContent = "Read again?";
+    } else {
+        toggleReadBtn.classList.add('done-yet');
+        bookReadStatus.classList.add('not-read');
+        bookReadStatus.textContent = "Status: Not read yet";
+        toggleReadBtn.textContent = "Finished reading?";
+    }
+}
+
+window.unload = loadBooks() 
+
+function loadBooks() {
+    if (!localStorage) {
+        return;
+    } else {
+        for (let j = 0; j < localStorage.length; j++) {
+            let retrievedStorage = localStorage.getItem(j);
+            let storedObject = JSON.parse(retrievedStorage);
+            bookArray.push(storedObject);
+        }
+        bookArray.forEach(book => makeBookCards(book));
+    }
+}
